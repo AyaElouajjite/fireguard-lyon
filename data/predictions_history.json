@@ -1,0 +1,163 @@
+[
+  {
+    "quartier": "Part-Dieu",
+    "type_incendie": "Véhicule",
+    "origine": "Foudre",
+    "mois": 7,
+    "jour_semaine": 2,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 35.0,
+    "vent_vitesse_kmh": 15.0,
+    "indice_secheresse": 65.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Élevé",
+    "confiance": 0.6597,
+    "probabilites": {
+      "Faible": 0.0273,
+      "Modéré": 0.313,
+      "Élevé": 0.6597
+    },
+    "timestamp": "2026-06-30T15:29:16.559932",
+    "id": "PRED-20260630152916-1c8f"
+  },
+  {
+    "quartier": "Presqu'île",
+    "type_incendie": "Domestique",
+    "origine": "Cuisine",
+    "mois": 7,
+    "jour_semaine": 2,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 35.0,
+    "vent_vitesse_kmh": 15.0,
+    "indice_secheresse": 65.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Élevé",
+    "confiance": 0.7108,
+    "probabilites": {
+      "Faible": 0.0203,
+      "Modéré": 0.2689,
+      "Élevé": 0.7108
+    },
+    "timestamp": "2026-06-30T14:35:57.346430",
+    "id": "PRED-20260630143557-260c"
+  },
+  {
+    "quartier": "Gerland",
+    "type_incendie": "Domestique",
+    "origine": "Cuisine",
+    "mois": 7,
+    "jour_semaine": 2,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 35.0,
+    "vent_vitesse_kmh": 15.0,
+    "indice_secheresse": 65.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Élevé",
+    "confiance": 0.7362,
+    "probabilites": {
+      "Faible": 0.0169,
+      "Modéré": 0.2469,
+      "Élevé": 0.7362
+    },
+    "timestamp": "2026-06-30T00:19:40.667541",
+    "id": "PRED-20260630001940-f911"
+  },
+  {
+    "quartier": "Presqu'île",
+    "type_incendie": "Domestique",
+    "origine": "Cuisine",
+    "mois": 7,
+    "jour_semaine": 0,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 35.0,
+    "vent_vitesse_kmh": 15.0,
+    "indice_secheresse": 65.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Élevé",
+    "confiance": 0.6815,
+    "probabilites": {
+      "Faible": 0.0205,
+      "Modéré": 0.298,
+      "Élevé": 0.6815
+    },
+    "timestamp": "2026-06-28T23:14:45.210552",
+    "id": "PRED-20260628231445-37f3"
+  },
+  {
+    "quartier": "Presqu'île",
+    "type_incendie": "Domestique",
+    "origine": "Cuisine",
+    "mois": 7,
+    "jour_semaine": 0,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 3.0,
+    "vent_vitesse_kmh": 5.0,
+    "indice_secheresse": 20.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Modéré",
+    "confiance": 0.5872,
+    "probabilites": {
+      "Faible": 0.3608,
+      "Modéré": 0.5872,
+      "Élevé": 0.052
+    },
+    "timestamp": "2026-06-14T00:22:52.620918",
+    "id": "PRED-20260614002252-0a91"
+  },
+  {
+    "quartier": "Vieux Lyon",
+    "type_incendie": "Véhicule",
+    "origine": "Cigarette",
+    "mois": 7,
+    "jour_semaine": 3,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 35.0,
+    "vent_vitesse_kmh": 3.0,
+    "indice_secheresse": 30.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Modéré",
+    "confiance": 0.4952,
+    "probabilites": {
+      "Faible": 0.4097,
+      "Modéré": 0.4952,
+      "Élevé": 0.0951
+    },
+    "timestamp": "2026-06-13T23:59:08.866640",
+    "id": "PRED-20260613235908-462b"
+  },
+  {
+    "quartier": "Part-Dieu",
+    "type_incendie": "Véhicule",
+    "origine": "Cigarette",
+    "mois": 7,
+    "jour_semaine": 6,
+    "heure": 20,
+    "temperature_c": 32.0,
+    "humidite_pct": 20.0,
+    "vent_vitesse_kmh": 10.0,
+    "indice_secheresse": 30.0,
+    "surface_m2": 50,
+    "duree_intervention_min": 30,
+    "niveau_risque_predit": "Modéré",
+    "confiance": 0.558,
+    "probabilites": {
+      "Faible": 0.0765,
+      "Modéré": 0.558,
+      "Élevé": 0.3655
+    },
+    "timestamp": "2026-06-13T23:58:13.227742",
+    "id": "PRED-20260613235813-4757"
+  }
+]
