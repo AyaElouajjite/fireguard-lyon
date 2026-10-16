@@ -1,53 +1,60 @@
-# 🔥 FireGuard Lyon — Détection et prédiction des risques d'incendie
+# FireGuard Lyon — Détection et prédiction des risques d'incendie
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.6-F7931E?logo=scikitlearn&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-optionnel-47A248?logo=mongodb&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
 
-Tableau de bord interactif qui analyse les incendies survenus à **Lyon** et prédit le **niveau de risque** d'un nouvel incident grâce à un modèle de Machine Learning.
+Application d'analyse de données et de Machine Learning qui étudie les incendies survenus à Lyon entre 2022 et 2024 et prédit le niveau de risque d'un nouvel incident. Les résultats sont présentés dans un tableau de bord web alimenté par une API REST.
 
----
+## Sommaire
 
-## 📋 Sommaire
+- [Présentation](#présentation)
+- [Fonctionnalités](#fonctionnalités)
+- [Points techniques](#points-techniques)
+- [Stack technique](#stack-technique)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [API](#api)
+- [Contact](#contact)
 
-- [Aperçu](#-aperçu)
-- [Fonctionnalités](#-fonctionnalités)
-- [Technologies](#-technologies)
-- [Architecture](#-architecture)
-- [Installation](#-installation)
-- [API](#-api)
-- [Auteur](#-auteur)
+## Présentation
 
-## 🎯 Aperçu
+Le projet couvre l'ensemble de la chaîne de traitement de la donnée :
 
-Le projet combine :
+- **Données** : jeu de 2 500 incidents décrits par 24 variables (quartier, coordonnées GPS, type et origine de l'incendie, conditions météorologiques, indice de sécheresse, surface touchée, durée d'intervention, dégâts estimés).
+- **Modélisation** : classification du niveau de risque par un modèle d'ensemble atteignant environ **81 % de précision**.
+- **Restitution** : tableau de bord interactif avec indicateurs, cartographie, prédiction et rapports exportables.
 
-- un **jeu de données de 2 500 incendies** à Lyon (2022‑2024) : quartier, coordonnées GPS, type d'incendie, météo (température, humidité, vent, indice de sécheresse), surface, durée d'intervention, dégâts estimés…
-- un **modèle d'ensemble** (*Random Forest* + *Gradient Boosting* via un `VotingClassifier`) qui classe le niveau de risque, avec **~81 % de précision** ;
-- un **dashboard web** avec graphiques, carte de chaleur et formulaire de prédiction.
+## Fonctionnalités
 
-## ✨ Fonctionnalités
+- Indicateurs globaux et tendances mensuelles
+- Carte de chaleur et analyse par quartier
+- Distribution horaire des incendies
+- Prédiction du niveau de risque à partir d'un formulaire
+- Métriques du modèle et importance des variables
+- Historique des analyses avec export PDF, CSV et JSON
+- Bascule automatique sur un stockage CSV lorsque MongoDB n'est pas disponible
 
-- 📊 Statistiques globales et tendances mensuelles
-- 🗺️ Carte de chaleur et répartition par quartier
-- 🕒 Distribution horaire des incendies
-- 🤖 Prédiction du niveau de risque par le modèle ML
-- 📈 Métriques du modèle et importance des variables
-- 🗂️ Historique des analyses avec **export PDF, CSV et JSON**
-- 💾 Fonctionne avec **MongoDB** ou, à défaut, en **mode CSV** automatique
+## Points techniques
 
-## 🛠️ Technologies
+- Modèle d'ensemble `VotingClassifier` combinant **Random Forest** et **Gradient Boosting**, avec encodage des variables catégorielles et persistance via `joblib`
+- API REST développée avec **FastAPI** et validation des données avec **Pydantic**
+- Couche d'accès aux données abstraite permettant d'utiliser MongoDB ou des fichiers CSV sans modifier le reste de l'application
+- Génération de rapports PDF côté serveur avec **fpdf2**
+- Script de lancement automatisé (installation, démarrage du serveur, ouverture du navigateur)
 
-| Couche | Outils |
+## Stack technique
+
+| Domaine | Technologies |
 |---|---|
 | Backend | Python, FastAPI, Uvicorn, Pydantic |
 | Machine Learning | scikit-learn, pandas, NumPy, joblib |
-| Base de données | MongoDB (PyMongo) — optionnel |
-| Export | fpdf2 |
+| Base de données | MongoDB (PyMongo), CSV en mode dégradé |
+| Reporting | fpdf2 |
 | Frontend | HTML, CSS, JavaScript |
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 fireguard-lyon/
@@ -58,17 +65,17 @@ fireguard-lyon/
 │   ├── generate_dataset.py  # Génération du jeu de données
 │   ├── database.py          # Connexion MongoDB
 │   ├── data_store.py        # Accès aux données (MongoDB ou CSV)
-│   └── pdf_export.py        # Export PDF
-├── frontend/                # Dashboard (HTML / CSS / JS)
-├── data/                    # Dataset + historique des prédictions
-├── models/                  # Modèle entraîné (.joblib)
+│   └── pdf_export.py        # Génération des rapports PDF
+├── frontend/                # Tableau de bord (HTML, CSS, JavaScript)
+├── data/                    # Jeu de données et historique des prédictions
+├── models/                  # Modèle entraîné
 ├── launch.py                # Lanceur automatique
-└── LANCER.bat               # Lancement par double-clic (Windows)
+└── LANCER.bat               # Lancement sous Windows
 ```
 
-## 🚀 Installation
+## Installation
 
-**Prérequis :** Python 3.10+ (MongoDB facultatif)
+**Prérequis :** Python 3.10 ou supérieur. MongoDB est facultatif.
 
 ```bash
 git clone https://github.com/AyaElouajjite/fireguard-lyon.git
@@ -79,20 +86,20 @@ venv\Scripts\activate        # Windows
 # source venv/bin/activate   # Linux / macOS
 
 pip install -r requirements.txt
-cp .env.example .env         # optionnel : configuration MongoDB
+cp .env.example .env         # facultatif : configuration MongoDB
 
 python launch.py
 ```
 
-Sous Windows, vous pouvez aussi double-cliquer sur **`LANCER.bat`**.
+Sous Windows, le fichier `LANCER.bat` effectue les mêmes étapes.
 
-Le dashboard est disponible sur **http://localhost:8000**.
+Le tableau de bord est accessible sur `http://localhost:8000` et la documentation Swagger de l'API sur `http://localhost:8000/docs`.
 
-## 🔌 API
+## API
 
 | Méthode | Route | Description |
 |---|---|---|
-| GET | `/api/stats` | Statistiques globales |
+| GET | `/api/stats` | Indicateurs globaux |
 | GET | `/api/incidents` | Liste des incidents |
 | GET | `/api/trends/monthly` | Tendances mensuelles |
 | GET | `/api/heatmap` | Données de la carte de chaleur |
@@ -104,8 +111,6 @@ Le dashboard est disponible sur **http://localhost:8000**.
 | GET | `/api/ml/feature-importance` | Importance des variables |
 | GET | `/api/ml/export/all/pdf` | Export PDF de l'historique |
 
-La documentation interactive Swagger est disponible sur `http://localhost:8000/docs`.
+## Contact
 
-## 👩‍💻 Auteur
-
-**Aya Elouajjite** — [@AyaElouajjite](https://github.com/AyaElouajjite)
+**Aya Elouajjite** — [github.com/AyaElouajjite](https://github.com/AyaElouajjite)
